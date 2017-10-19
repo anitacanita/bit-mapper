@@ -9,7 +9,7 @@ class BitmapEditor
       line = line.chomp
       case line
       when "S" #seing if it works with a table of 2x3
-        puts Table.new(2,3).show
+        puts Table.new(2,3).display
       else
         puts "unrecognised command :("
       end

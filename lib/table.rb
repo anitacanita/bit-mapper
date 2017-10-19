@@ -2,21 +2,27 @@ require_relative "pixel.rb"
 
 class Table
 
-attr_reader :columns, :rows
-
 VALID_COLUMNS_RANGE = 1..250
 VALID_ROWS_RANGE = 1..250
 
-  def initialize(column_number, row_number)
-    raise "Please enter a number between 1-250" unless VALID_COLUMNS_RANGE.include?(column_number) && VALID_ROWS_RANGE.include?(row_number)
+  def initialize(columns, rows)
+    raise "Please enter a number between 1-250" unless VALID_COLUMNS_RANGE.include?(columns) && VALID_ROWS_RANGE.include?(rows)
 
-    @columns = Array.new(column_number, Pixel.new)
-    @rows = Array.new(row_number, columns)
+    @columns = columns
+    @rows = rows
+    @table = create_table(columns, rows)
   end
 
-  def show
-    rows.map do |row|
+  def display
+    @table.map do |row|
       row.map{ |pixel| pixel.color}.join
     end.join("\n")
   end
+
+private
+
+  def create_table(columns, rows)
+    Array.new(rows, Array.new(columns, Pixel.new))
+  end
+
 end
