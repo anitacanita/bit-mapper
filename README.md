@@ -1,7 +1,11 @@
+🚧  Work in progress  🚧
+
 # Bitmap editor
+Technical exercise for carwow
 
-..
 
-# Running
+### Getting started
+1. Install gems: `bundle install`
 
-`>bin/bitmap_editor examples/show.txt`
+### Running
+`bin/bitmap_editor examples/show.txt`
