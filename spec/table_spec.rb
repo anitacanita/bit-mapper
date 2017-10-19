@@ -11,4 +11,10 @@ describe Table do
     expect {described_class.new(251, 100)}.to raise_error "Please enter a number between 1-250"
   end
 
+  it "colors a pixel" do
+    table.color_pixel(1, 2, "X")
+    expect(table.display).to eq "OO\nXO\nOO"
+  end
+
+
 end

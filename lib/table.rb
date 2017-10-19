@@ -2,8 +2,8 @@ require_relative "pixel.rb"
 
 class Table
 
-VALID_COLUMNS_RANGE = 1..250
-VALID_ROWS_RANGE = 1..250
+  VALID_COLUMNS_RANGE = 1..250
+  VALID_ROWS_RANGE = 1..250
 
   def initialize(columns, rows)
     raise "Please enter a number between 1-250" unless VALID_COLUMNS_RANGE.include?(columns) && VALID_ROWS_RANGE.include?(rows)
@@ -19,10 +19,14 @@ VALID_ROWS_RANGE = 1..250
     end.join("\n")
   end
 
+  def color_pixel(column, row, shade)
+    @table[row-1][column-1].change_color(shade)
+  end
+
 private
 
   def create_table(columns, rows)
-    Array.new(rows, Array.new(columns, Pixel.new))
+    Array.new(rows) { Array.new(columns) {Pixel.new} }
   end
 
 end
