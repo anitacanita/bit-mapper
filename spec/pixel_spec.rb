@@ -7,4 +7,9 @@ describe Pixel do
     expect(pixel.color).to eq("O")
   end
 
+  it "can change its color" do
+    pixel.change_color("A")
+    expect(pixel.color).to eq("A")
+  end
+
 end
