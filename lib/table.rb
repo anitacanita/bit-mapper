@@ -15,7 +15,7 @@ VALID_ROWS_RANGE = 1..250
 
   def display
     @table.map do |row|
-      row.map{ |pixel| pixel.color}.join
+      row.map { |pixel| pixel.color }.join
     end.join("\n")
   end
 
