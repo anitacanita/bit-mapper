@@ -1,0 +1,67 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/anacarlos/Google_Drive/Projects/tech_tests/bit-mapper/spec/pixel_spec.rb": [
+        1,
+        null,
+        1,
+        3,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/anacarlos/Google_Drive/Projects/tech_tests/bit-mapper/lib/pixel.rb": [
+        1,
+        1,
+        null,
+        1,
+        3,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/anacarlos/Google_Drive/Projects/tech_tests/bit-mapper/spec/table_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/anacarlos/Google_Drive/Projects/tech_tests/bit-mapper/lib/table.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        9,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1508427412
+  }
+}
