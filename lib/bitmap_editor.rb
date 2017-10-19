@@ -1,3 +1,5 @@
+require_relative 'table.rb'
+
 class BitmapEditor
 
   def run(file)
@@ -6,10 +8,10 @@ class BitmapEditor
     File.open(file).each do |line|
       line = line.chomp
       case line
-      when 'S'
-          puts "There is no image"
+      when 'S' #seing if it works with a table of 2x3
+        puts Table.new(2,3).show
       else
-          puts 'unrecognised command :('
+        puts 'unrecognised command :('
       end
     end
   end
