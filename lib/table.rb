@@ -1,4 +1,4 @@
-require_relative "pixel.rb"
+require_relative "pixel"
 
 class Table
   attr_accessor :table

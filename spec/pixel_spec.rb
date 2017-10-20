@@ -1,4 +1,4 @@
-require 'pixel'
+require "pixel"
 
 describe Pixel do
   let(:pixel) {described_class.new}
