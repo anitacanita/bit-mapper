@@ -7,9 +7,9 @@
 2. Run `bundle install` to install gems
 
 ### Tests
-`rspec` runs the entire test suite.
+`rspec` runs the entire test suite and you can see a simple code coverage report in the output.
 
-For more detailed information on code coverage, check [SimpleCov](coverage/index.html)'s dashboard.
+For more detailed information on the code coverage, check SimpleCov's dashboard  coverage/index.html. *Note that the files will only be generated after running the tests.*
 
 ### Running the editor
 
@@ -21,12 +21,16 @@ To run the application, supply a command file like:
 
 **Commands:**
 - [x] Create a new image
-- [ ] Clear the table
+- [x] Clear the table
 - [x] Color a single pixel
 - [ ] Draw a vertical line
 - [ ] Draw a horizontal line
 - [x] Show image
 
 **Other stuff:**
+- [ ] Better error handling
+  - [ ] Check for type
+- [ ] @ vs. self
+- [ ] Better names - there's confusion between table and image
 - [ ] Make it work with an input file
 - [ ] Integration test
