@@ -34,6 +34,14 @@ class Table
     end
   end
 
+  def color_horizontal_line(row, start_column, end_column, shade)
+    raise "The given coordinates are not in the image range" unless row_in_range?(row) && column_in_range?(start_column) && column_in_range?(start_column)
+
+    @table[row-1][start_column-1..end_column-1].each do |pixel|
+       pixel.change_color(shade)
+    end
+  end
+
   def clear
     @table.map { |row| row.map { |pixel| pixel.reset} }
   end

@@ -23,14 +23,14 @@ To run the application, supply a command file like:
 - [x] Create a new image
 - [x] Clear the table
 - [x] Color a single pixel
-- [ ] Draw a vertical line
-- [ ] Draw a horizontal line
+- [x] Draw a vertical line
+- [x] Draw a horizontal line
 - [x] Show image
 
 **Other stuff:**
-- [ ] Better error handling
-  - [ ] Check for type
-- [ ] @ vs. self
+- [ ] Improve error handling
+- [x] Validate coordinates range
+- [ ] Validate input type
 - [ ] Better names - there's confusion between table and image
 - [ ] Make it work with an input file
 - [ ] Integration test
