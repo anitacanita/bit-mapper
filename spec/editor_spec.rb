@@ -5,32 +5,32 @@ describe Editor do
 
   it "displays an image of pixels with the given width and length" do
     editor.create_image(3,3)
-    expect(editor.show).to eq "OOO\nOOO\nOOO"
+    expect(editor.show_image).to eq "OOO\nOOO\nOOO"
   end
 
   it "colors a pixel"  do
     editor.create_image(3,3)
     editor.color_pixel(1, 2, "X")
-    expect(editor.show).to eq "OOO\nXOO\nOOO"
+    expect(editor.show_image).to eq "OOO\nXOO\nOOO"
   end
 
   it "colors a vertical segment of pixels" do
     editor.create_image(3,3)
     editor.color_vertical_line(1, 1, 3, "X")
-    expect(editor.show).to eq "XOO\nXOO\nXOO"
+    expect(editor.show_image).to eq "XOO\nXOO\nXOO"
   end
 
   it "colors a horizontal segment of pixels" do
     editor.create_image(3,3)
     editor.color_horizontal_line(2, 1, 2, "X")
-    expect(editor.show).to eq "OOO\nXXO\nOOO"
+    expect(editor.show_image).to eq "OOO\nXXO\nOOO"
   end
 
   it "clears the image" do
     editor.create_image(3,3)
     editor.color_horizontal_line(2, 1, 2, "X")
-    editor.clear
-    expect(editor.show).to eq "OOO\nOOO\nOOO"
+    editor.clear_image
+    expect(editor.show_image).to eq "OOO\nOOO\nOOO"
   end
 
   context "error handling" do

@@ -2,7 +2,7 @@ class Pixel
   attr_accessor :color
 
   def initialize
-    @color = "O"
+    @color = reset
   end
 
   def change_color(shade)

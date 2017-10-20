@@ -1,5 +1,5 @@
 class Image
-  attr_accessor :table, :columns, :rows
+  attr_reader :table, :columns, :rows
 
   VALID_COLUMNS_RANGE = 1..250
   VALID_ROWS_RANGE = 1..250
@@ -13,7 +13,7 @@ class Image
   end
 
   def display
-    @table.map do |row|
+    table.map do |row|
       row.map { |pixel| pixel.color }.join
     end.join("\n")
   end

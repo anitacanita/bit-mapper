@@ -1,21 +1,23 @@
 class Editor
+  
+  OUT_OF_RANGE_ERROR = "The given coordinates are not in the image range"
 
   def create_image(length, width)
     @image = Image.new(length, width)
   end
 
-  def show
+  def show_image
     @image.display
   end
 
   def color_pixel(column, row, shade)
-    raise "The given coordinates are not in the image range" unless column_in_range?(column) && row_in_range?(row)
+    raise OUT_OF_RANGE_ERROR unless column_in_range?(column) && row_in_range?(row)
 
     @image.table[row-1][column-1].change_color(shade)
   end
 
   def color_vertical_line(column, start_row, end_row, shade)
-    raise "The given coordinates are not in the image range" unless column_in_range?(column) && row_in_range?(start_row) && row_in_range?(start_row)
+    raise OUT_OF_RANGE_ERROR unless column_in_range?(column) && row_in_range?(start_row) && row_in_range?(start_row)
 
     @image.table[start_row-1..end_row-1].each do |row|
       row[column-1].change_color(shade)
@@ -23,14 +25,14 @@ class Editor
   end
 
   def color_horizontal_line(row, start_column, end_column, shade)
-    raise "The given coordinates are not in the image range" unless row_in_range?(row) && column_in_range?(start_column) && column_in_range?(start_column)
+    raise OUT_OF_RANGE_ERROR unless row_in_range?(row) && column_in_range?(start_column) && column_in_range?(start_column)
 
     @image.table[row-1][start_column-1..end_column-1].each do |pixel|
        pixel.change_color(shade)
     end
   end
 
-  def clear
+  def clear_image
     @image.table.map { |row| row.map { |pixel| pixel.reset} }
   end
 

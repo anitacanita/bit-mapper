@@ -1,4 +1,5 @@
-require_relative "table.rb"
+require_relative "image"
+require_relative "pixel"
 
 class BitmapEditor
 
@@ -9,7 +10,7 @@ class BitmapEditor
       line = line.chomp
       case line
       when "S" #seing if it works with a table of 2x3
-        puts Table.new(2,3).display
+        puts Image.new(2,3).display
       else
         puts "unrecognised command :("
       end
