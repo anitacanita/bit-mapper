@@ -9,4 +9,8 @@ class Pixel
     self.color = shade
   end
 
+  def reset
+    self.color = "O"
+  end
+
 end

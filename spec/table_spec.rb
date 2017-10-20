@@ -16,5 +16,11 @@ describe Table do
     expect(table.display).to eq "OO\nXO\nOO"
   end
 
+  it "clears itself" do
+    table.color_pixel(1, 3, "X")
+    table.clear
+    expect(table.display).to eq "OO\nOO\nOO"
+  end
+
 
 end

@@ -23,6 +23,12 @@ class Table
     @table[row-1][column-1].change_color(shade)
   end
 
+  def clear
+    @table.map do |row|
+      row.map { |pixel| pixel.reset}
+    end
+  end
+
 private
 
   def create_table(columns, rows)

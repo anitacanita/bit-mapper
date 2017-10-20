@@ -12,4 +12,10 @@ describe Pixel do
     expect(pixel.color).to eq("A")
   end
 
+  it "it can revert back to its starting color" do
+    pixel.change_color("A")
+    pixel.reset
+    expect(pixel.color).to eq("O")
+  end
+
 end
