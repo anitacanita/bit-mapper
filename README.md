@@ -33,6 +33,6 @@ To run the application, supply a command file like:
 - [ ] Improve error handling
 - [x] Validate coordinates range
 - [ ] Validate input type
-- [ ] Better names - there's confusion between table and image
+- [x] Better names - there's confusion between table and image
 - [ ] Make it work with an input file
 - [ ] Integration test
