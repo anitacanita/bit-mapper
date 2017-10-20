@@ -17,6 +17,8 @@ To run the application, supply a command file like:
 
 `$ bin/bitmap_editor examples/show.txt`
 
+----
+
 ##### TO-DO
 
 **Commands:**
