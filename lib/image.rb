@@ -5,7 +5,7 @@ class Image
   VALID_ROWS_RANGE = 1..250
 
   def initialize(columns, rows)
-    raise "Please enter a number between 1-250" unless VALID_COLUMNS_RANGE.include?(columns) && VALID_ROWS_RANGE.include?(rows)
+    raise ArgumentError, "Enter a number between 1-250" unless valid_range?(columns, rows)
 
     @columns = columns
     @rows = rows
@@ -22,6 +22,10 @@ private
 
   def create_table(columns, rows)
     Array.new(rows) { Array.new(columns) {Pixel.new} }
+  end
+
+  def valid_range?(columns, rows)
+    VALID_COLUMNS_RANGE.include?(columns) && VALID_ROWS_RANGE.include?(rows)
   end
 
 end

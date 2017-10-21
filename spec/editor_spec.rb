@@ -39,9 +39,19 @@ describe Editor do
       expect{editor.color_pixel(2, 0, "X")}.to raise_error "The given coordinates are not in the image range"
     end
 
-    it "raises an error if line coordinates are outside the image range" do
+    it "raises an error if vertical line coordinates are outside the image range" do
       editor.create_image(3,3)
-      expect{editor.color_vertical_line(4, 0, 2, "X")}.to raise_error "The given coordinates are not in the image range"
+      expect{editor.color_vertical_line(4, 0, 5, "X")}.to raise_error "The given coordinates are not in the image range"
+    end
+
+    it "raises an error if horizontal line coordinates are outside the image range" do
+      editor.create_image(3,3)
+      expect{editor.color_horizontal_line(0, 6, 5, "X")}.to raise_error "The given coordinates are not in the image range"
+    end
+
+    it "raises an error if given color shade isn't capital letter" do
+      editor.create_image(3,3)
+      expect{editor.color_pixel(2, 1, "a")}.to raise_error "Color should be a capital letter"
     end
   end
 

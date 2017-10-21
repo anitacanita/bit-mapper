@@ -1,5 +1,6 @@
 require_relative "image"
 require_relative "pixel"
+require_relative "editor"
 
 class BitmapEditor
 
@@ -10,7 +11,9 @@ class BitmapEditor
       line = line.chomp
       case line
       when "S" #seing if it works with a table of 2x3
-        puts Image.new(2,3).display
+        editor = Editor.new
+        editor.create_image(20, 20)
+        puts editor.show_image
       else
         puts "unrecognised command :("
       end
