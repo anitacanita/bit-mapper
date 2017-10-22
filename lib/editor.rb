@@ -31,7 +31,7 @@ class Editor
     end
   end
 
-  def color_horizontal_line(row, start_column, end_column, shade)
+  def color_horizontal_line(start_column, end_column, row, shade)
     image_exists?
     valid_color?(shade)
     valid_line_coordinates?([start_column, row], [end_column, row])

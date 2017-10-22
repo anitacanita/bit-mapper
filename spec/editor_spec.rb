@@ -21,7 +21,7 @@ describe Editor do
     end
 
     it "colors a horizontal segment of pixels" do
-      editor.color_horizontal_line(2, 1, 2, "X")
+      editor.color_horizontal_line(1, 2, 2, "X")
       expect(editor.show_image).to eq "OOO\nXXO\nOOO"
     end
 

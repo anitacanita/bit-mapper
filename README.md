@@ -13,7 +13,7 @@ For more detailed information on the code coverage, check SimpleCov's dashboard 
 
 ### Running the editor
 
-To run the application, supply a command file like:
+To run the application, supply a command file like so:
 
 `$ bin/bitmap_editor examples/show.txt`
 
@@ -34,5 +34,5 @@ To run the application, supply a command file like:
 - [x] Validate coordinates range
 - [x] Validate input type
 - [x] Better names - there's confusion between table and image
-- [ ] Make it work with an input file
+- [x] Make it work with an input file
 - [ ] Integration test
