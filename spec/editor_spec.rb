@@ -3,31 +3,28 @@ require "editor"
 describe Editor do
   let(:editor) {described_class.new}
 
+  before(:each) {editor.create_image(3,3)}
+
   it "displays an image of pixels with the given width and length" do
-    editor.create_image(3,3)
     expect(editor.show_image).to eq "OOO\nOOO\nOOO"
   end
 
   it "colors a pixel"  do
-    editor.create_image(3,3)
     editor.color_pixel(1, 2, "X")
     expect(editor.show_image).to eq "OOO\nXOO\nOOO"
   end
 
   it "colors a vertical segment of pixels" do
-    editor.create_image(3,3)
     editor.color_vertical_line(1, 1, 3, "X")
     expect(editor.show_image).to eq "XOO\nXOO\nXOO"
   end
 
   it "colors a horizontal segment of pixels" do
-    editor.create_image(3,3)
     editor.color_horizontal_line(2, 1, 2, "X")
     expect(editor.show_image).to eq "OOO\nXXO\nOOO"
   end
 
   it "clears the image" do
-    editor.create_image(3,3)
     editor.color_horizontal_line(2, 1, 2, "X")
     editor.clear_image
     expect(editor.show_image).to eq "OOO\nOOO\nOOO"
@@ -35,24 +32,29 @@ describe Editor do
 
   context "error handling" do
     it "raises an error if pixel coordinates are outside the image range" do
-      editor.create_image(3,3)
       expect{editor.color_pixel(2, 0, "X")}.to raise_error "The given coordinates are not in the image range"
     end
 
     it "raises an error if vertical line coordinates are outside the image range" do
-      editor.create_image(3,3)
       expect{editor.color_vertical_line(4, 0, 5, "X")}.to raise_error "The given coordinates are not in the image range"
     end
 
     it "raises an error if horizontal line coordinates are outside the image range" do
-      editor.create_image(3,3)
       expect{editor.color_horizontal_line(0, 6, 5, "X")}.to raise_error "The given coordinates are not in the image range"
     end
 
-    it "raises an error if given color shade isn't capital letter" do
-      editor.create_image(3,3)
+    it "raises an error if given color shade is in lower case" do
       expect{editor.color_pixel(2, 1, "a")}.to raise_error "Color should be a capital letter"
     end
+
+    it "raises an error if given color shade is a number" do
+      expect{editor.color_pixel(2, 1, "1")}.to raise_error "Color should be a capital letter"
+    end
+
+    it "raises an error if given color shade is an integer" do
+      expect{editor.color_pixel(2, 1, 8)}.to raise_error "Color should be a capital letter"
+    end
+
   end
 
 end
