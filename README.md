@@ -30,9 +30,9 @@ To run the application, supply a command file like:
 - [x] Show image
 
 **Other stuff:**
-- [ ] Improve error handling
+- [x] Improve error handling
 - [x] Validate coordinates range
-- [ ] Validate input type
+- [x] Validate input type
 - [x] Better names - there's confusion between table and image
 - [ ] Make it work with an input file
 - [ ] Integration test

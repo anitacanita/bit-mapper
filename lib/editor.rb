@@ -1,17 +1,20 @@
 class Editor
 
   OUT_OF_RANGE_ERROR = "The given coordinates are not in the image range"
-  INVALID_COLOR = "Color should be a capital letter"
+  INVALID_COLOR_ERROR = "Color should be a capital letter"
+  NO_IMAGE_ERROR = "No image has been created"
 
   def create_image(length, width)
     @image = Image.new(length, width)
   end
 
   def show_image
+    image_exists?
     @image.display
   end
 
   def color_pixel(column, row, shade)
+    image_exists?
     valid_color?(shade)
     valid_coordinates?(column, row)
 
@@ -19,6 +22,7 @@ class Editor
   end
 
   def color_vertical_line(column, start_row, end_row, shade)
+    image_exists?
     valid_color?(shade)
     valid_line_coordinates?([column, start_row], [column, end_row])
 
@@ -28,6 +32,7 @@ class Editor
   end
 
   def color_horizontal_line(row, start_column, end_column, shade)
+    image_exists?
     valid_color?(shade)
     valid_line_coordinates?([start_column, row], [end_column, row])
 
@@ -37,6 +42,8 @@ class Editor
   end
 
   def clear_image
+    image_exists?
+
     @image.table.map { |row| row.map { |pixel| pixel.reset} }
   end
 
@@ -59,6 +66,11 @@ class Editor
   end
 
   def valid_color?(shade)
-    raise ArgumentError, INVALID_COLOR unless /[A-Z]/.match(shade.to_s)
+    raise ArgumentError, INVALID_COLOR_ERROR unless /[A-Z]/.match(shade.to_s)
   end
+
+  def image_exists?
+    raise RuntimeError, NO_IMAGE_ERROR unless !@image.nil?
+  end
+
 end
