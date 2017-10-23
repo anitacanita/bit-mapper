@@ -6,6 +6,9 @@ describe Editor do
   context "When an image has been created" do
     before(:each) {editor.create_image(3,3)}
 
+    let(:invalid_color) {"Color should be a capital letter"}
+    let(:out_of_boundaries) {"Coordinates are outside image boundaries"}
+
     it "displays an image of pixels with the given width and length" do
       expect(editor.show_image).to eq "OOO\nOOO\nOOO"
     end
@@ -41,59 +44,61 @@ describe Editor do
       expect(editor.show_image).to eq "OOO\nOOO\nOOO"
     end
 
-    it "raises an error if pixel coordinates are outside the image range" do
-      expect{editor.color_pixel(2, 0, "X")}.to raise_error "The given coordinates are not in the image range"
+    it "raises an error if pixel coordinates are outside the image boundaries" do
+      expect{editor.color_pixel(2, 0, "X")}.to raise_error out_of_boundaries
     end
 
-    it "raises an error if vertical line coordinates are outside the image range" do
-      expect{editor.color_vertical_line(0, 2, 1, "X")}.to raise_error "The given coordinates are not in the image range"
+    it "raises an error if vertical line coordinates are outside the image boundaries" do
+      expect{editor.color_vertical_line(0, 2, 1, "X")}.to raise_error out_of_boundaries
     end
 
-    it "raises an error if horizontal line coordinates are outside the image range" do
-      expect{editor.color_horizontal_line(2, 3, -2, "X")}.to raise_error "The given coordinates are not in the image range"
+    it "raises an error if horizontal line coordinates are outside the image boundaries" do
+      expect{editor.color_horizontal_line(2, 3, -2, "X")}.to raise_error out_of_boundaries
     end
 
     it "raises an error if given color shade is in lower case" do
-      expect{editor.color_pixel(2, 1, "a")}.to raise_error "Color should be a capital letter"
+      expect{editor.color_pixel(2, 1, "a")}.to raise_error invalid_color
     end
 
     it "raises an error if given color shade is a number" do
-      expect{editor.color_pixel(2, 1, "1")}.to raise_error "Color should be a capital letter"
+      expect{editor.color_pixel(2, 1, "1")}.to raise_error invalid_color
     end
 
     it "raises an error if given color shade is an integer" do
-      expect{editor.color_pixel(2, 1, 8)}.to raise_error "Color should be a capital letter"
+      expect{editor.color_pixel(2, 1, 8)}.to raise_error invalid_color
     end
 
     it "raises an error if given color shade is a multiple character string" do
-      expect{editor.color_pixel(2, 1, "LOL")}.to raise_error "Color should be a capital letter"
+      expect{editor.color_pixel(2, 1, "LOL")}.to raise_error invalid_color
     end
 
-    it "raises an error if given color shade has non-word  characters" do
-      expect{editor.color_pixel(2, 1, ":)")}.to raise_error "Color should be a capital letter"
+    it "raises an error if given color shade has non-word characters" do
+      expect{editor.color_pixel(2, 1, ":)")}.to raise_error invalid_color
     end
   end
 
-  context "when image hasn't been created" do
+  context "When an image hasn't been created" do
+
+    let(:no_image) {"No image has been created"}
 
     it "raises an error when trying to show image" do
-      expect{editor.show_image}.to raise_error "No image has been created"
+      expect{editor.show_image}.to raise_error no_image
     end
 
     it "raises an error when trying to clear image" do
-      expect{editor.clear_image}.to raise_error "No image has been created"
+      expect{editor.clear_image}.to raise_error no_image
     end
 
     it "raises an error when trying to color a pixel" do
-     expect{editor.clear_image}.to raise_error "No image has been created"
+     expect{editor.clear_image}.to raise_error no_image
    end
 
     it "raises an error when trying to color a vertical line" do
-      expect{editor.color_vertical_line(1, 1, 3, "X")}.to raise_error "No image has been created"
+      expect{editor.color_vertical_line(1, 1, 3, "X")}.to raise_error no_image
     end
 
     it "raises an error when trying to color a horizontal line" do
-      expect{editor.color_pixel(1, 2, "X")}.to raise_error "No image has been created"
+      expect{editor.color_pixel(1, 2, "X")}.to raise_error no_image
     end
 
   end

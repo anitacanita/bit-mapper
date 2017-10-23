@@ -1,6 +1,6 @@
 class Editor
 
-  OUT_OF_RANGE_ERROR = "The given coordinates are not in the image range"
+  OUT_OF_BOUNDARIES_ERROR = "Coordinates are outside image boundaries"
   INVALID_COLOR_ERROR = "Color should be a capital letter"
   NO_IMAGE_ERROR = "No image has been created"
 
@@ -60,20 +60,20 @@ class Editor
     coordinates[0]..coordinates[1]
   end
 
-  def row_in_range?(row_number)
-    row_number <= @image.rows && row_number > 0
+  def row_in_range?(row)
+    row <= @image.rows && row > 0
   end
 
-  def column_in_range?(column_number)
-    column_number <= @image.columns && column_number > 0
+  def column_in_range?(column)
+    column <= @image.columns && column > 0
   end
 
-  def valid_coordinates?(column_number, row_number)
-    column_in_range?(column_number) && row_in_range?(row_number)
+  def valid_coordinates?(column, row)
+    column_in_range?(column) && row_in_range?(row)
   end
 
-  def validate_coordinates(column_number, row_number)
-    raise ArgumentError, OUT_OF_RANGE_ERROR unless valid_coordinates?(column_number, row_number)
+  def validate_coordinates(column, row)
+    raise OUT_OF_BOUNDARIES_ERROR unless valid_coordinates?(column, row)
   end
 
   def valid_color?(shade)
@@ -81,7 +81,7 @@ class Editor
   end
 
   def validate_color(shade)
-    raise ArgumentError, INVALID_COLOR_ERROR unless valid_color?(shade)
+    raise INVALID_COLOR_ERROR unless valid_color?(shade)
   end
 
   def image_exists?
@@ -89,7 +89,7 @@ class Editor
   end
 
   def check_image
-    raise RuntimeError, NO_IMAGE_ERROR unless image_exists?
+    raise NO_IMAGE_ERROR unless image_exists?
   end
 
 end
