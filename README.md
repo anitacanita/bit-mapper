@@ -1,7 +1,6 @@
 # Bitmap editor
 
-Ruby program that simulates a basic interactive bitmap editor. Bitmaps
-are represented as a matrix of pixels with each element representing a colour.
+Ruby program that simulates a basic interactive bitmap editor. Bitmaps are represented as a matrix of pixels with each element representing a colour.
 
 ### Getting started
 1. Clone this repo
