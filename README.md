@@ -33,24 +33,16 @@ Pass an input file containing the commands to `bin/bitmap_editor`, running it li
 
 *Input File:*
 
-`I 5 5`
-
-`L 1 3 A`
-
-`V 2 3 5 W`
-
-`H 3 5 2 Z`
-
-`S`
+`I 5 5`  
+`L 1 3 A`  
+`V 2 3 5 W`  
+`H 3 5 2 Z`  
+`S`  
 
 *Output:*
 
-`OOOOO`
-
-`OOZZZ`
-
-`AWOOO`
-
-`OWOOO`
-
-`OWOOO`
+`OOOOO`  
+`OOZZZ`  
+`AWOOO`  
+`OWOOO`  
+`OWOOO`  
