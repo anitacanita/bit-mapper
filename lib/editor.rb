@@ -68,8 +68,12 @@ class Editor
     column_number <= @image.columns && column_number > 0
   end
 
+  def valid_coordinates?(column_number, row_number)
+    column_in_range?(column_number) && row_in_range?(row_number)
+  end
+
   def validate_coordinates(column_number, row_number)
-    raise ArgumentError, OUT_OF_RANGE_ERROR unless column_in_range?(column_number) && row_in_range?(row_number)
+    raise ArgumentError, OUT_OF_RANGE_ERROR unless valid_coordinates?(column_number, row_number)
   end
 
   def valid_color?(shade)
