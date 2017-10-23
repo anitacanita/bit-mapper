@@ -5,7 +5,7 @@ class Image
   VALID_ROWS_RANGE = 1..250
 
   def initialize(columns, rows)
-    valid_range?(columns, rows)
+    validate_range(columns, rows)
 
     @columns = columns
     @rows = rows
@@ -25,8 +25,11 @@ private
   end
 
   def valid_range?(columns, rows)
-    unless VALID_COLUMNS_RANGE.include?(columns) && VALID_ROWS_RANGE.include?(rows)
-      raise ArgumentError, "Enter a number between 1-250"
-    end
+    VALID_COLUMNS_RANGE.include?(columns) && VALID_ROWS_RANGE.include?(rows)
   end
+
+  def validate_range(columns, rows)
+    raise ArgumentError, "Enter a number between 1-250" unless valid_range?(columns, rows)
+  end
+
 end

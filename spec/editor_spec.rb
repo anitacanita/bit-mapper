@@ -20,8 +20,18 @@ describe Editor do
       expect(editor.show_image).to eq "XOO\nXOO\nXOO"
     end
 
+    it "colors a vertical segment of pixels with reversed coordinates" do
+      editor.color_vertical_line(1, 3, 1, "X")
+      expect(editor.show_image).to eq "XOO\nXOO\nXOO"
+    end
+
     it "colors a horizontal segment of pixels" do
       editor.color_horizontal_line(1, 2, 2, "X")
+      expect(editor.show_image).to eq "OOO\nXXO\nOOO"
+    end
+
+    it "colors a horizontal segment of pixels with reversed coordinates" do
+      editor.color_horizontal_line(2, 1, 2, "X")
       expect(editor.show_image).to eq "OOO\nXXO\nOOO"
     end
 
@@ -36,11 +46,11 @@ describe Editor do
     end
 
     it "raises an error if vertical line coordinates are outside the image range" do
-      expect{editor.color_vertical_line(4, 0, 5, "X")}.to raise_error "The given coordinates are not in the image range"
+      expect{editor.color_vertical_line(0, 2, 1, "X")}.to raise_error "The given coordinates are not in the image range"
     end
 
     it "raises an error if horizontal line coordinates are outside the image range" do
-      expect{editor.color_horizontal_line(0, 6, 5, "X")}.to raise_error "The given coordinates are not in the image range"
+      expect{editor.color_horizontal_line(2, 3, -2, "X")}.to raise_error "The given coordinates are not in the image range"
     end
 
     it "raises an error if given color shade is in lower case" do
@@ -53,6 +63,14 @@ describe Editor do
 
     it "raises an error if given color shade is an integer" do
       expect{editor.color_pixel(2, 1, 8)}.to raise_error "Color should be a capital letter"
+    end
+
+    it "raises an error if given color shade is a multiple character string" do
+      expect{editor.color_pixel(2, 1, "LOL")}.to raise_error "Color should be a capital letter"
+    end
+
+    it "raises an error if given color shade has non-word  characters" do
+      expect{editor.color_pixel(2, 1, ":)")}.to raise_error "Color should be a capital letter"
     end
   end
 
