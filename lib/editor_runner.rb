@@ -3,7 +3,6 @@ require_relative "pixel"
 require_relative "editor"
 
 class EditorRunner
-  attr_reader :commands
 
   def initialize
     @editor = Editor.new
