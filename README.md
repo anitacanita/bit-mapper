@@ -8,7 +8,7 @@ Ruby program that simulates a basic interactive bitmap editor. Bitmaps are repre
 
 ### Tests and code coverage
 
-`rspec` runs the entire test suite. I included SimpleCov in the project so there's a simple code coverage report in the testing output.
+`rspec` runs the entire test suite. I included [SimpleCov](https://github.com/colszowka/simplecov) in the project so I could see a simple code coverage report in the tests output.
 
 For more detailed information on this project's code coverage, check SimpleCov's dashboard by opening coverage/index.html in a browser. *Note that the files will only be generated after running the tests.*
 
