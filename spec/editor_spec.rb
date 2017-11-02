@@ -77,6 +77,39 @@ describe Editor do
     end
   end
 
+  context "Bucket fill" do
+
+    it "fills the pixel with a color" do
+      editor.create_image(1,1)
+      editor.bucket_fill(1, 1, "X")
+      expect(editor.show_image).to eq "X"
+    end
+
+    it "fills a blank image with a color" do
+      editor.create_image(2, 1)
+      editor.bucket_fill(1, 1, "X")
+      expect(editor.show_image).to eq "XX"
+    end
+
+    it "stops at a different color" do
+      editor.create_image(3, 1)
+      editor.color_pixel(2, 1, "Y")
+      editor.bucket_fill(1, 1, "X")
+      expect(editor.show_image).to eq "XYO"
+    end
+
+    it "fills an image correctly" do
+      editor.create_image(4, 4)
+      editor.color_pixel(3, 1, "Y")
+      editor.color_pixel(3, 2, "Y")
+      editor.color_pixel(1, 3, "Y")
+      editor.color_pixel(2, 4, "Y")
+      editor.bucket_fill(2, 2, "X")
+      expect(editor.show_image).to eq "XXYX\nXXYX\nYXXX\nOYXX"
+    end
+
+  end
+
   context "When an image hasn't been created" do
 
     let(:no_image) {"No image has been created"}

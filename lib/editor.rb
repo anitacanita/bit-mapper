@@ -4,8 +4,8 @@ class Editor
   INVALID_COLOR_ERROR = "Color should be a capital letter"
   NO_IMAGE_ERROR = "No image has been created"
 
-  def create_image(length, width)
-    @image = Image.new(length, width)
+  def create_image(width, height)
+    @image = Image.new(width, height)
   end
 
   def show_image
@@ -41,6 +41,31 @@ class Editor
     @image.table[offset(row)][get_line(start_column, end_column)].each do |pixel|
        pixel.change_color(shade)
     end
+  end
+
+  def bucket_fill(column, row, shade, shade_to_replace = nil)
+    if shade_to_replace == nil
+      shade_to_replace = get_color_at(column, row)
+    end
+
+    color_pixel(column, row, shade)
+
+    if column_in_range?(column+1) && get_color_at(column+1, row) == shade_to_replace
+      bucket_fill(column+1, row, shade, shade_to_replace)
+    end
+
+    if column_in_range?(column-1) && get_color_at(column-1, row) == shade_to_replace
+      bucket_fill(column-1, row, shade, shade_to_replace)
+    end
+
+    if row_in_range?(row+1) && get_color_at(column, row+1) == shade_to_replace
+      bucket_fill(column, row+1, shade, shade_to_replace)
+    end
+
+    if row_in_range?(row-1) && get_color_at(column, row-1) == shade_to_replace
+      bucket_fill(column, row-1, shade, shade_to_replace)
+    end
+
   end
 
   def clear_image
@@ -90,6 +115,10 @@ class Editor
 
   def check_image
     raise NO_IMAGE_ERROR unless image_exists?
+  end
+
+  def get_color_at(column, row)
+    @image.table[offset(row)][offset(column)].color
   end
 
 end
